@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import { useRouter } from 'next/navigation';
 
@@ -9,13 +8,13 @@ export default function Home() {
 
   return (
     <main
-      className={`${inter.className} container flex flex-col justify-center items-center h-screen`}
+      className={`${inter.className} container mx-auto flex flex-col justify-center items-center h-screen`}
     >
-      <div className="h-1/2 flex justify-center items-center">
+      <div className="h-1/2 container flex justify-center items-center">
         <h1>Users List Web Interface</h1>
       </div>
 
-      <div className="h-1/2 flex justify-center items-center">
+      <div className="h-1/2 container flex justify-center items-center">
         <button
           className="rounded-full
         p-2.5
