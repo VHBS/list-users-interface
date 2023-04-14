@@ -22,7 +22,7 @@ export default function Home() {
         text-slate-100
         hover:bg-purple-900"
           type="button"
-          onClick={() => router.push('/users/1')}
+          onClick={() => router.push('/users/1?results=12')}
         >
           Show me the users now!
         </button>
