@@ -4,8 +4,8 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 203,203,203,1;
+  --background-end-rgb: 142,142,142,1;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,10 +18,28 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
+  background-color: #F3F4F6;
+}
+
+.user-picture {
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  top: 15%;
+  left: 0;
+  right: 0;
+}
+
+.container-user-country-flag {
+  z-index: 0;
+  overflow: hidden;
+}
+
+.gradient-picture {
+  display:inline-block;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.333299512987013) 23%, rgba(255,255,255,1) 69%, rgba(255,255,255,1) 87%);
+}
+
+.user-country-flag {
+  z-index:-1;
 }
