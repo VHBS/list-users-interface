@@ -30,9 +30,25 @@ body {
   right: 0;
 }
 
+.user-picture-details {
+  z-index: 1;
+  max-width: 10rem;
+  margin-left: 5rem;
+
+  top: 5rem;
+  left: 0;
+  right: 0;
+}
+
 .container-user-country-flag {
   z-index: 0;
   overflow: hidden;
+}
+
+.container-user-country-flag-details {
+  z-index: 0;
+  overflow: hidden;
+  max-height: 15rem;
 }
 
 .gradient-flag{
@@ -43,6 +59,23 @@ body {
       rgba(255,255,255,1) 69%);
 }
 
+.gradient-flag-details{
+  display:inline-block;
+    background: linear-gradient(
+      180deg, rgba(255,255,255,0) 0%,
+      rgba(255, 255, 255, 0) 23%,
+      rgba(255,255,255,1) 69%);
+  max-height: 15rem;
+}
+
 .user-country-flag {
   z-index:-1;
+}
+
+.user-country-flag-details {
+  z-index:-1;
+}
+
+#map {
+  height: 600px
 }
