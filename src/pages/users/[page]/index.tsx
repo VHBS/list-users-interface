@@ -1,6 +1,6 @@
 import { UserType } from '@component/@types/user';
 import { GetServerSideProps } from 'next';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import UserCard from '@component/components/UserCard';
 
@@ -12,10 +12,6 @@ type UsersPageProps = {
 
 export default function UsersPage({ data }: UsersPageProps) {
   const { results } = data;
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   if ('error' in data) return <p>Users not found :/</p>;
 
   return (
