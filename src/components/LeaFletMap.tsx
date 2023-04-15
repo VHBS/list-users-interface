@@ -6,7 +6,7 @@ type LeaFletProps = {
   userName: string;
 };
 
-export const LeaFlet = ({ lat, long, userName }: LeaFletProps) => {
+export default function LeaFlet({ lat, long, userName }: LeaFletProps) {
   return (
     <MapContainer
       id="map"
@@ -23,4 +23,4 @@ export const LeaFlet = ({ lat, long, userName }: LeaFletProps) => {
       </Marker>
     </MapContainer>
   );
-};
+}

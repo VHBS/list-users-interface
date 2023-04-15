@@ -1,14 +1,16 @@
-'use client';
-
 import React, { useEffect, useContext } from 'react';
 import Link from 'next/link';
 import { UsersContext } from '@component/context/Context';
 import { UserNotSelected } from '@component/components/UserNotSelected';
 import { capitalize } from '@component/utils/utils';
 import { FiMail, FiPhone } from 'react-icons/fi';
-import { LeaFlet } from '@component/components/LeaFletMap';
+import dynamic from 'next/dynamic';
 
 export default function UsersPage() {
+  const Map = dynamic(() => import('@component/components/LeaFletMap'), {
+    loading: () => <p>loading...</p>,
+    ssr: false,
+  });
   const { userData } = useContext(UsersContext);
   useEffect(() => {
     console.log(userData);
@@ -112,7 +114,7 @@ export default function UsersPage() {
 
             <div className="w-full py-4 px-3 mt-3 flex flex-col justify-start border border-gray-100 rounded">
               {'name' in userData && (
-                <LeaFlet
+                <Map
                   lat={Number(userData.location.coordinates.latitude)}
                   long={Number(userData.location.coordinates.longitude)}
                   userName={userData.name.first}
