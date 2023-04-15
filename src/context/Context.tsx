@@ -15,7 +15,9 @@ const userContextDefaultValues: UserContext = {
   setUserData: () => null,
 };
 
-const UsersContext = createContext<UserContext>(userContextDefaultValues);
+export const UsersContext = createContext<UserContext>(
+  userContextDefaultValues,
+);
 
 export function UserContextProvider({ children }: Props) {
   const [userData, setUserData] = useState<UserContext['userData']>({});
