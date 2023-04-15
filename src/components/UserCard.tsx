@@ -1,5 +1,8 @@
 import { UserType } from '@component/@types/user';
+import { UsersContext } from '@component/context/Context';
 import { capitalize } from '@component/utils/utils';
+import Link from 'next/link';
+import { useContext } from 'react';
 import { FiMail, FiPhone } from 'react-icons/fi';
 
 type UserCardProps = {
@@ -7,6 +10,7 @@ type UserCardProps = {
 };
 
 export default function UserCard({ user }: UserCardProps) {
+  const { setUserData } = useContext(UsersContext);
   return (
     <div
       className="my-3
@@ -42,11 +46,6 @@ export default function UserCard({ user }: UserCardProps) {
             {capitalize(user.gender)}
           </div>
         </div>
-        <div className="flex justify-between  items-center text-gray-700">
-          <div className="flex justify-center items-center">
-            {/* {user.location.city} */}
-          </div>
-        </div>
       </div>
 
       <div className="w-full flex justify-center">
@@ -75,26 +74,27 @@ export default function UserCard({ user }: UserCardProps) {
           "
           type="button"
           title={user.email}
-          // onClick={() => window.open('mailstring')}
           onClick={() => navigator.clipboard.writeText(user.email)}
         >
           <FiMail className="mx-auto" />
         </button>
       </div>
-      <button
+      <Link
+        href={`/user`}
         className="rounded-b
+          text-center
           mt-2
-          outline-1
-          p-1
+          p-2
           text-purple-400
           hover:bg-purple-600
           hover:text-gray-100
           "
         type="button"
         title="Details"
+        onClick={() => setUserData(user)}
       >
         Details
-      </button>
+      </Link>
     </div>
   );
 }
