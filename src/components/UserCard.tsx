@@ -2,7 +2,7 @@ import { UserType } from '@component/@types/user';
 import { UsersContext } from '@component/context/Context';
 import { capitalize } from '@component/utils/utils';
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FiMail, FiPhone } from 'react-icons/fi';
 
 type UserCardProps = {
@@ -10,7 +10,20 @@ type UserCardProps = {
 };
 
 export default function UserCard({ user }: UserCardProps) {
-  const { setUserData } = useContext(UsersContext);
+  const { setUserData, clipboard, setClipboard } = useContext(UsersContext);
+  const [userEmail, setUserEmail] = useState(<FiMail className="mx-auto" />);
+  const [userCell, setUserCell] = useState(<FiPhone className="mx-auto" />);
+
+  useEffect(() => {
+    clipboard === user.email
+      ? setUserEmail(<p className="text-xs">Copied</p>)
+      : setUserEmail(<FiMail className="mx-auto" />);
+
+    clipboard === user.cell
+      ? setUserCell(<p className="text-xs">Copied</p>)
+      : setUserCell(<FiPhone className="mx-auto" />);
+  }, [clipboard, user.email, user.cell]);
+
   return (
     <div
       className="my-3
@@ -59,9 +72,12 @@ export default function UserCard({ user }: UserCardProps) {
           "
           type="button"
           title={user.cell}
-          onClick={() => navigator.clipboard.writeText(user.cell)}
+          onClick={() => {
+            navigator.clipboard.writeText(user.cell);
+            setClipboard(user.cell);
+          }}
         >
-          <FiPhone className="mx-auto" />
+          {userCell}
         </button>
         <button
           className="rounded-r
@@ -74,9 +90,12 @@ export default function UserCard({ user }: UserCardProps) {
           "
           type="button"
           title={user.email}
-          onClick={() => navigator.clipboard.writeText(user.email)}
+          onClick={() => {
+            navigator.clipboard.writeText(user.email);
+            setClipboard(user.email);
+          }}
         >
-          <FiMail className="mx-auto" />
+          {userEmail}
         </button>
       </div>
       <Link
