@@ -5,8 +5,16 @@ import { UserNotSelected } from '@component/components/UserNotSelected';
 import { capitalize } from '@component/utils/utils';
 import { FiMail, FiPhone } from 'react-icons/fi';
 import dynamic from 'next/dynamic';
+import { GetServerSideProps } from 'next';
+import { PostType } from '@component/@types/post';
+import { PhotoType } from '@component/@types/photos';
 
-export default function UsersPage() {
+type UserPageType = {
+  posts: PostType[];
+  photos: PhotoType[];
+};
+
+export default function UserPage({ posts }: UserPageType) {
   const { userData, clipboard, setClipboard } = useContext(UsersContext);
   const [userEmail, setUserEmail] = useState(<FiMail className="mx-auto" />);
   const [userCell, setUserCell] = useState(<FiPhone className="mx-auto" />);
@@ -23,8 +31,6 @@ export default function UsersPage() {
     clipboard === userData.cell
       ? setUserCell(<p className="text-xs">Copied</p>)
       : setUserCell(<FiPhone className="mx-auto" />);
-
-    // console.log(typeof userData);
   }, [clipboard, userData]);
 
   if (!userData.name.first) return <UserNotSelected />;
@@ -141,10 +147,33 @@ export default function UsersPage() {
           </div>
 
           <div className="md:col-span-6 lg:col-span-7 2xl:col-span-8 p-3">
-            <div className="w-full py-4 px-3 flex flex-col justify-start border border-gray-100 rounded"></div>
+            <div className="w-full py-4 px-3 flex flex-col justify-start border border-gray-100 rounded">
+              {posts.map((post: PostType) => (
+                <div key={post.id} className="mt-3">
+                  <h1>{post.title}</h1>
+                  <img src={post.photo.url} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </main>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const resPosts = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const resPhotos = await fetch('https://jsonplaceholder.typicode.com/photos');
+
+  const photos = (await resPhotos.json()) as PhotoType[];
+
+  const posts = (await resPosts.json())
+    .slice(0, 10)
+    .map((post: PostType, index: number) => ({
+      ...post,
+      photo: photos[index],
+    })) as PostType[];
+
+  return { props: { posts } };
+};
