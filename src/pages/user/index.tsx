@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import Link from 'next/link';
 import { UsersContext } from '@component/context/Context';
 import { UserNotSelected } from '@component/components/UserNotSelected';
@@ -7,16 +7,27 @@ import { FiMail, FiPhone } from 'react-icons/fi';
 import dynamic from 'next/dynamic';
 
 export default function UsersPage() {
+  const { userData, clipboard, setClipboard } = useContext(UsersContext);
+  const [userEmail, setUserEmail] = useState(<FiMail className="mx-auto" />);
+  const [userCell, setUserCell] = useState(<FiPhone className="mx-auto" />);
   const Map = dynamic(() => import('@component/components/LeaFletMap'), {
     loading: () => <p>loading...</p>,
     ssr: false,
   });
-  const { userData } = useContext(UsersContext);
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
 
-  if (!('name' in userData)) return <UserNotSelected />;
+  useEffect(() => {
+    clipboard === userData.email
+      ? setUserEmail(<p className="text-xs">Copied</p>)
+      : setUserEmail(<FiMail className="mx-auto" />);
+
+    clipboard === userData.cell
+      ? setUserCell(<p className="text-xs">Copied</p>)
+      : setUserCell(<FiPhone className="mx-auto" />);
+
+    // console.log(typeof userData);
+  }, [clipboard, userData]);
+
+  if (!userData.name.first) return <UserNotSelected />;
 
   return (
     <main className="container min-h-screen mx-auto px-3">
@@ -90,9 +101,12 @@ export default function UsersPage() {
                   "
                   type="button"
                   title={userData.cell}
-                  onClick={() => navigator.clipboard.writeText(userData.cell)}
+                  onClick={() => {
+                    navigator.clipboard.writeText(userData.cell);
+                    setClipboard(userData.cell);
+                  }}
                 >
-                  <FiPhone className="mx-auto" />
+                  {userCell}
                 </button>
                 <button
                   className="rounded-r
@@ -105,9 +119,12 @@ export default function UsersPage() {
                   "
                   type="button"
                   title={userData.email}
-                  onClick={() => navigator.clipboard.writeText(userData.email)}
+                  onClick={() => {
+                    navigator.clipboard.writeText(userData.email);
+                    setClipboard(userData.email);
+                  }}
                 >
-                  <FiMail className="mx-auto" />
+                  {userEmail}
                 </button>
               </div>
             </div>

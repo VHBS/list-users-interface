@@ -22,7 +22,7 @@ export default function UserCard({ user }: UserCardProps) {
     clipboard === user.cell
       ? setUserCell(<p className="text-xs">Copied</p>)
       : setUserCell(<FiPhone className="mx-auto" />);
-  }, [clipboard, user.email, user.cell]);
+  }, [clipboard, user]);
 
   return (
     <div
