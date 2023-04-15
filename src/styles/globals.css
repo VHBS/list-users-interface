@@ -18,7 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #F3F4F6;
+  background-color: #e0d9df;
 }
 
 .user-picture {
@@ -35,9 +35,12 @@ body {
   overflow: hidden;
 }
 
-.gradient-picture {
+.gradient-flag{
   display:inline-block;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.333299512987013) 23%, rgba(255,255,255,1) 69%, rgba(255,255,255,1) 87%);
+    background: linear-gradient(
+      180deg, rgba(255,255,255,0) 0%,
+      rgba(255, 255, 255, 0) 23%,
+      rgba(255,255,255,1) 69%);
 }
 
 .user-country-flag {
