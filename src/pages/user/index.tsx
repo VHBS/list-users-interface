@@ -75,7 +75,7 @@ export default function UsersPage() {
                 <p className="text-end">{userData.location.street.name}</p>
               </div>
 
-              <div className="w-full flex justify-center  py-1">
+              <div className="w-full flex justify-center py-1">
                 <button
                   className="rounded-l
                     w-1/3
@@ -107,10 +107,40 @@ export default function UsersPage() {
                 </button>
               </div>
             </div>
+
+            <div className="w-full py-4 px-3 mt-3 flex flex-col justify-start border border-gray-100 rounded">
+              {'name' in userData && (
+                <MapContainer
+                  id="map"
+                  center={[
+                    Number(userData.location.coordinates.latitude),
+                    Number(userData.location.coordinates.longitude),
+                  ]}
+                  zoom={5}
+                  scrollWheelZoom={false}
+                >
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker
+                    position={[
+                      Number(userData.location.coordinates.latitude),
+                      Number(userData.location.coordinates.longitude),
+                    ]}
+                  >
+                    <Popup>
+                      Here is {userData.name.first} {userData.name.last} house.
+                    </Popup>
+                  </Marker>
+                </MapContainer>
+              )}
+            </div>
           </div>
+
           <div className="md:col-span-6 lg:col-span-7 2xl:col-span-8 p-3">
             <div className="w-full py-4 px-3 flex flex-col justify-start border border-gray-100 rounded">
-              {'name' in userData && (
+              {/* {'name' in userData && (
                 <MapContainer
                   id="map"
                   center={[
@@ -135,7 +165,7 @@ export default function UsersPage() {
                     </Popup>
                   </Marker>
                 </MapContainer>
-              )}
+              )} */}
             </div>
           </div>
         </div>
