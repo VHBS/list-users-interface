@@ -1,38 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<details>
+  <summary>Sumary</summary>
+  <ol>
+  <li>
+    <a href="#about-the-development">About The Development</a>
+	</li>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#installation">Installation</a>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-## Getting Started
+# About The Development
+First of all I was very happy with the result I got because I used a framework that I had no experience with along with Tailwind which is a library that I also had no experience with. I tried to take advantage of the Server Side Rendering that Next provides and I went through some challenges with TypeScript but nothing that gave me a headache.
 
-First, run the development server:
+Tailwind surprised me positively when comparing it to Bootstrap and I will definitely study it further.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+My biggest challenge is the time to carry out this project, but that will not stop me from doing it.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# About The Project
+O projeto se trata de uma lista de usuarios e suas páginas de detalhes.
+[Access project deploy at Vercel](https://list-users-interface.vercel.app/)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+![project exemple image](https://raw.githubusercontent.com/VHBS/list-users-interface/main/images/project-exemple.png)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Built With
+This project was develop using [NextJS](https://nextjs.org/) with [TypeScript](https://www.typescriptlang.org/) and [Tailwind](https://tailwindcss.com/).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Installation
+1. Clone the repo
+   ```sh
+   git clone https://github.com/VHBS/list-users-interface
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Run the project
+   ```sh
+   npm run install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact
+Victor Hugo Baum Schlichting
+email: victorgow2@gmail.com
+phone: (13) 981075843.
