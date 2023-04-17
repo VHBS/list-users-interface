@@ -25,7 +25,7 @@ Tailwind surprised me positively when comparing it to Bootstrap and I will defin
 My biggest challenge is the time to carry out this project, but that will not stop me from doing it.
 
 # About The Project
-O projeto se trata de uma lista de usuarios e suas páginas de detalhes.
+The project is a list of users and their detail pages..
 [Access project deploy at Vercel](https://list-users-interface.vercel.app/)
 
 ![project exemple image](https://raw.githubusercontent.com/VHBS/list-users-interface/main/images/project-exemple.png)
