@@ -44,7 +44,7 @@ This project was develop using [NextJS](https://nextjs.org/) with [TypeScript](h
    ```
 3. Run the project
    ```sh
-   npm run install
+   npm run build && npm start
    ```
 
 ## Contact
